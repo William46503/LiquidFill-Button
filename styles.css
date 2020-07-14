@@ -1,0 +1,84 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background: white;
+}
+
+/*/////////////////Exemple Button CSS//////*/
+.button{
+  position: relative;
+  background:none ;
+  border: 1px solid #007BFF;
+  color: #072E50;
+  padding: 8px;
+  margin: 10px;
+  font-size: 14px;
+  overflow: hidden;
+  font: sans-serif;
+  outline: none;
+}
+
+/*////////////////////////Button content here/////////////////*/
+/*Change this element to fit the buttons width*/
+.button::after{
+  content: "";
+  position:absolute;
+  background-color: white;
+  top: -180%;
+  left: -12%;
+  width: 130px;
+  height: 130px;
+  border-radius: 35%;
+  z-index: -2;
+}
+
+.button:hover{
+  background: #007BFF;
+  color: whitesmoke;
+  transition: 1.8s ease-in-out all;
+  z-index: 2;
+}
+
+
+.button:hover::after{
+  animation: wavemotion 2s ease-in-out forwards;
+  z-index: -2;
+}
+
+/*//////////Move ::after upwards to create a wavemotion///////*/
+@keyframes wavemotion {
+  from{
+    transform: translateY(-0px) rotateX(0deg);
+  }
+  to{
+    transform: translateY(-90px) rotateZ(300deg);
+  }
+}
+
+/*  Ripple */
+.ripple {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: lightblue;
+  transform: scale(0);
+  position: absolute;
+  opacity: 1;
+}
+.rippleEffect {
+    animation: rippleDrop 0.5s linear;
+}
+
+@keyframes rippleDrop {
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
